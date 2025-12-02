@@ -3,3 +3,4 @@ Ce repository contient mes résolutions du [calendrier de l'Avent Coda](https://
 
 ![Résolutions Yoan Thirion](img/advent.webp)
 
+- [Jour 1 — Un curieux message](day-01/README.md)
