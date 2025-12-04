@@ -5,3 +5,4 @@ Ce repository contient mes résolutions du [calendrier de l'Avent Coda](https://
 
 - [Jour 1 — Un curieux message](day-01/README.md)
 - [Jour 2 — Compter les Rennes](day-02/README.md)
+- [Jour 3 — Le script fantôme](day-03/README.md)
