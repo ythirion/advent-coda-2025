@@ -7,3 +7,4 @@ Ce repository contient mes résolutions du [calendrier de l'Avent Coda](https://
 - [Jour 2 — Compter les Rennes](day-02/README.md)
 - [Jour 3 — Le script fantôme](day-03/README.md)
 - [Jour 4 — Bataille de biscuits](day-04/README.md)
+- [Jour 5 – Le piège de la date infernale](day-05/README.md)

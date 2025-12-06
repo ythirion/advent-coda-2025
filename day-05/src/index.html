@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Stock 📅</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+        }
+
+        .slot-machine {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .reels-container {
+            display: flex;
+            gap: 15px;
+        }
+
+        .reel-wrapper {
+            background: #f9f9f9;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .reel-label {
+            color: #555;
+            font-size: 0.85em;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .reel {
+            width: 100px;
+            height: 150px;
+            overflow: hidden;
+            position: relative;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .reel-strip {
+            position: absolute;
+            width: 100%;
+            transition: transform 0.1s linear;
+        }
+
+        .reel-item {
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            border-bottom: 1px solid #eee;
+        }
+
+        .reel-window {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% - 10px);
+            height: 50px;
+            border: 2px solid #28a745;
+            pointer-events: none;
+            z-index: 10;
+            border-radius: 5px;
+        }
+
+        .lever-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 60px;
+            height: 200px;
+            position: relative;
+        }
+
+        .lever-base {
+            position: absolute;
+            bottom: 0;
+            width: 50px;
+            height: 30px;
+            background: #555;
+            border-radius: 5px;
+            border: 2px solid #333;
+            z-index: 5;
+        }
+
+        .lever-arm {
+            width: 8px;
+            height: 140px;
+            background: #666;
+            border-radius: 4px;
+            transition: transform 0.3s ease-out;
+            cursor: grab;
+            position: absolute;
+            bottom: 15px;
+            transform-origin: bottom center;
+        }
+
+        .lever-arm.pulling {
+            cursor: grabbing;
+        }
+
+        .lever-arm.pulled {
+            transform: rotate(45deg);
+        }
+
+        .lever-handle {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: #e74c3c;
+            border-radius: 50%;
+            border: 2px solid #c0392b;
+        }
+
+        .controls-info {
+            margin-top: 15px;
+            color: #666;
+            font-size: 0.85em;
+        }
+
+        .controls-info div {
+            margin: 5px 0;
+        }
+
+        .selected-date-container {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .selected-date {
+            font-size: 1.3em;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 14px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .submit-button:hover {
+            background-color: #218838;
+        }
+
+        .status-info {
+            margin-top: 15px;
+            padding: 10px;
+            background: #e7f3ff;
+            border-radius: 5px;
+            color: #0066cc;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gestion de Stock</h1>
+
+        <form id="date-form">
+            <div class="slot-machine">
+                <div class="reels-container">
+                    <div class="reel-wrapper">
+                        <div class="reel-label">Jour</div>
+                        <div class="reel" id="dayReel">
+                            <div class="reel-strip" id="dayStrip"></div>
+                            <div class="reel-window"></div>
+                        </div>
+                    </div>
+
+                    <div class="reel-wrapper">
+                        <div class="reel-label">Mois</div>
+                        <div class="reel" id="monthReel">
+                            <div class="reel-strip" id="monthStrip"></div>
+                            <div class="reel-window"></div>
+                        </div>
+                    </div>
+
+                    <div class="reel-wrapper">
+                        <div class="reel-label">Année</div>
+                        <div class="reel" id="yearReel">
+                            <div class="reel-strip" id="yearStrip"></div>
+                            <div class="reel-window"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lever-container">
+                    <div class="lever-arm" id="lever">
+                        <div class="lever-handle"></div>
+                    </div>
+                    <div class="lever-base"></div>
+                </div>
+            </div>
+
+            <div class="controls-info">
+                <div>🖱️ Cliquez et tirez le levier vers le bas</div>
+                <div>⌨️ Appuyez sur ESPACE pour arrêter chaque rouleau</div>
+            </div>
+
+            <div class="status-info" id="statusInfo">Date du jour sélectionnée par défaut. Tirez le levier pour changer</div>
+
+            <div class="selected-date-container">
+                <label for="date">Date sélectionnée :</label>
+                <div class="selected-date" id="selectedDate">-- / -- / ----</div>
+                <input type="hidden" id="hiddenDate" name="date" required>
+            </div>
+
+            <button type="submit" class="submit-button">Valider la Sélection</button>
+        </form>
+    </div>
+
+    <script>
+        const days = Array.from({length: 31}, (_, i) => i + 1);
+        const monthsNumbers = Array.from({length: 12}, (_, i) => i + 1);
+        // On génère les années de 2025 à 3000
+        const years = Array.from({length: 976}, (_, i) => 2025 + i);
+
+        // Définir la date du jour comme valeur par défaut
+        const today = new Date();
+
+        let spinning = false;
+        let currentDay = today.getDate();
+        let currentMonth = today.getMonth() + 1; // +1 car getMonth() retourne 0-11
+        let currentYear = today.getFullYear();
+        let currentReelIndex = 0; // 0 = jour, 1 = mois, 2 = année
+        let reelsStopped = [false, false, false];
+        let animationFrames = [null, null, null];
+
+        // Variables pour le levier
+        const lever = document.getElementById('lever');
+        let isDragging = false;
+        let startY = 0;
+        let leverPulled = false;
+
+        const statusInfo = document.getElementById('statusInfo');
+
+        // Initialiser les rouleaux
+        function initReel(stripId, values, repeatCount = 20) {
+            const strip = document.getElementById(stripId);
+            let html = '';
+
+            // Répéter les valeurs plusieurs fois pour créer l'effet de boucle
+            for (let i = 0; i < repeatCount; i++) {
+                values.forEach(value => {
+                    html += `<div class="reel-item">${value}</div>`;
+                });
+            }
+
+            strip.innerHTML = html;
+        }
+
+        // Initialiser tous les rouleaux
+        initReel('dayStrip', days);
+        initReel('monthStrip', monthsNumbers);
+        initReel('yearStrip', years);
+
+        // Fonction pour positionner un rouleau sur une valeur spécifique
+        function setReelToValue(stripId, values, targetValue) {
+            const strip = document.getElementById(stripId);
+            const itemHeight = 50;
+            const reelCenterOffset = 50;
+
+            // Trouver l'index de la valeur cible dans l'array original
+            const valueIndex = values.findIndex(v => v === targetValue);
+            if (valueIndex === -1) return;
+
+            // Utiliser une occurrence au milieu des répétitions (10ème sur 20)
+            const repeatIndex = 10;
+            const absoluteIndex = repeatIndex * values.length + valueIndex;
+            const position = (absoluteIndex * itemHeight) - reelCenterOffset;
+            strip.style.transform = `translateY(-${position}px)`;
+        }
+
+        // Positionner les rouleaux sur la date du jour
+        setReelToValue('dayStrip', days, currentDay);
+        setReelToValue('monthStrip', monthsNumbers, currentMonth);
+        setReelToValue('yearStrip', years, currentYear);
+
+        // Afficher la date du jour par défaut
+        updateDateDisplay();
+
+        // Animation de spin
+        function spinReel(stripId, reelIndex, values) {
+            const strip = document.getElementById(stripId);
+            const itemHeight = 50;
+            let position = parseFloat(strip.style.transform.replace('translateY(', '').replace('px)', '')) || 0;
+            position = Math.abs(position);
+            let speed = 15;
+
+            const animate = () => {
+                if (reelsStopped[reelIndex]) {
+                    // Arrêter le rouleau sur la valeur actuelle
+                    // La fenêtre de sélection est centrée à 50% de la reel (75px)
+                    // L'item visible est celui dont le centre est dans la fenêtre
+                    const reelCenterOffset = 50; // Centre de la fenêtre moins la moitié de la hauteur d'un item
+                    const itemIndexInStrip = Math.floor((position + reelCenterOffset) / itemHeight);
+                    const visibleIndex = itemIndexInStrip % values.length;
+                    const finalValue = values[visibleIndex];
+
+                    // Positionner l'item au centre de la fenêtre
+                    const finalPosition = (itemIndexInStrip * itemHeight) - reelCenterOffset;
+
+                    strip.style.transition = 'transform 0.5s ease-out';
+                    strip.style.transform = `translateY(-${finalPosition}px)`;
+
+                    // Enregistrer la valeur
+                    if (reelIndex === 0) currentDay = finalValue;
+                    if (reelIndex === 1) currentMonth = finalValue;
+                    if (reelIndex === 2) currentYear = finalValue;
+
+                    setTimeout(() => {
+                        strip.style.transition = 'transform 0.1s linear';
+                        checkAllReelsStopped();
+                    }, 500);
+
+                    return;
+                }
+
+                position += speed;
+
+                if (position >= itemHeight * values.length) {
+                    position = 0;
+                }
+
+                strip.style.transform = `translateY(-${position}px)`;
+                animationFrames[reelIndex] = requestAnimationFrame(animate);
+            };
+
+            animate();
+        }
+
+        function checkAllReelsStopped() {
+            if (reelsStopped[0] && reelsStopped[1] && reelsStopped[2]) {
+                spinning = false;
+
+                // Vérifier la validité de la date
+                const daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
+                if (currentDay > daysInMonth) {
+                    currentDay = daysInMonth;
+                }
+
+                updateDateDisplay();
+
+                statusInfo.textContent = 'Date sélectionnée ! Tirez le levier pour recommencer';
+                statusInfo.style.background = '#d4edda';
+                statusInfo.style.color = '#155724';
+            }
+        }
+
+        function updateDateDisplay() {
+            document.getElementById('selectedDate').textContent = `${String(currentDay).padStart(2, '0')} / ${String(currentMonth).padStart(2, '0')} / ${currentYear}`;
+            document.getElementById('hiddenDate').value = `${currentYear}-${String(currentMonth).padStart(2, '0')}-${String(currentDay).padStart(2, '0')}`;
+        }
+
+        // Fonction principale de spin
+        function startSpin() {
+            if (spinning) return;
+
+            spinning = true;
+            currentReelIndex = 0;
+            reelsStopped = [false, false, false];
+
+            statusInfo.textContent = 'Appuyez sur ESPACE pour arrêter le JOUR';
+            statusInfo.style.background = '#fff3cd';
+            statusInfo.style.color = '#856404';
+
+            // Faire tourner tous les rouleaux
+            spinReel('dayStrip', 0, days);
+            spinReel('monthStrip', 1, monthsNumbers);
+            spinReel('yearStrip', 2, years);
+
+            // Remettre le levier en position initiale
+            setTimeout(() => {
+                lever.style.transform = 'rotate(0deg)';
+                leverPulled = false;
+            }, 500);
+        }
+
+        // Gestion du levier avec la souris
+        lever.addEventListener('mousedown', (e) => {
+            if (spinning) return;
+            isDragging = true;
+            startY = e.clientY;
+            lever.classList.add('pulling');
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging || spinning) return;
+
+            const deltaY = e.clientY - startY;
+
+            // Convertir le mouvement vertical en angle de rotation (0 à 45 degrés)
+            const angle = Math.max(0, Math.min(45, (deltaY / 60) * 45));
+            lever.style.transform = `rotate(${angle}deg)`;
+
+            // Si on tire le levier d'au moins 35 degrés
+            if (angle > 35 && !leverPulled) {
+                leverPulled = true;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isDragging && leverPulled && !spinning) {
+                startSpin();
+            } else if (isDragging) {
+                // Remettre le levier à sa position initiale si pas assez tiré
+                lever.style.transform = 'rotate(0deg)';
+            }
+
+            isDragging = false;
+            lever.classList.remove('pulling');
+        });
+
+        // Gestion du levier avec le clavier (touche espace pour arrêter les rouleaux)
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+
+                if (!spinning) {
+                    // Si aucun rouleau ne tourne, démarrer
+                    lever.style.transform = 'rotate(45deg)';
+                    leverPulled = true;
+                    setTimeout(() => {
+                        startSpin();
+                    }, 300);
+                } else {
+                    // Arrêter le rouleau actuel
+                    if (currentReelIndex === 0 && !reelsStopped[0]) {
+                        reelsStopped[0] = true;
+                        currentReelIndex = 1;
+                        statusInfo.textContent = 'Appuyez sur ESPACE pour arrêter le MOIS';
+                    } else if (currentReelIndex === 1 && !reelsStopped[1]) {
+                        reelsStopped[1] = true;
+                        currentReelIndex = 2;
+                        statusInfo.textContent = 'Appuyez sur ESPACE pour arrêter l\'ANNÉE';
+                    } else if (currentReelIndex === 2 && !reelsStopped[2]) {
+                        reelsStopped[2] = true;
+                        statusInfo.textContent = 'Arrêt en cours...';
+                    }
+                }
+            }
+        });
+
+        // Gestion du formulaire
+        const form = document.getElementById('date-form');
+        const hiddenDateInput = document.getElementById('hiddenDate');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const selectedDate = hiddenDateInput.value;
+            if (!selectedDate) {
+                alert("Tu n'as pas sélectionné de date ! Tire le levier pour obtenir une date.");
+                return;
+            }
+
+            const dateObj = new Date(selectedDate);
+            const today = new Date();
+            const minDate = new Date(today.setDate(today.getDate() + 1));
+
+            if (dateObj < minDate) alert("La date doit être au moins demain ! Tire le levier à nouveau.");
+            else alert("La date sélectionnée est : " + selectedDate);
+        });
+    </script>
+</body>
+</html>
