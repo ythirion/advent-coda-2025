@@ -8,3 +8,4 @@ Ce repository contient mes résolutions du [calendrier de l'Avent Coda](https://
 - [Jour 3 — Le script fantôme](day-03/README.md)
 - [Jour 4 — Bataille de biscuits](day-04/README.md)
 - [Jour 5 – Le piège de la date infernale](day-05/README.md)
+- [Jour 6 — Une histoire de poids](day-06/README.md)
