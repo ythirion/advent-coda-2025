@@ -31,7 +31,7 @@ Il y a `14 issues` identifiés et les principaux problèmes sont :
 - Pas de `namespace` nommés
 - Des problèmes de Casse `giftRegistry` comme nom de classe par exemple
 
-## Étaoe 4 : corriger ce qui est identifié
+## Étape 4 : corriger ce qui est identifié
 C'est l'étape la plus fun 😉
 
 Nous allons utiliser le `Linter` afin de guider nos actions. Il va nous servir de `Driver` d'implémentation.
@@ -48,7 +48,7 @@ Ici ils seront nettoyés automatiquement au moment de la sauvegarde.
 Pour ce faire, on peut automatiser certains traitements au moment de la sauvegarde par exemple (via `Actions On Save`)
 ![Actions on Save](img/actions-on-save.webp)
 
-Voici les options configurés derrière :
+Voici les options configuréés derrière :
 ![configure-cleanup.webp](img/configure-cleanup.webp)
 
 Maintenant qu'on a configuré notre `IDE`, allons-y pour le grand ménage :
