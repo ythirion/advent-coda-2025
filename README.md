@@ -3,10 +3,12 @@ Ce repository contient mes résolutions du [calendrier de l'Avent Coda](https://
 
 ![Résolutions Yoan Thirion](img/advent.webp)
 
-- [Jour 1 — Un curieux message](day-01/README.md)
-- [Jour 2 — Compter les Rennes](day-02/README.md)
-- [Jour 3 — Le script fantôme](day-03/README.md)
-- [Jour 4 — Bataille de biscuits](day-04/README.md)
-- [Jour 5 – Le piège de la date infernale](day-05/README.md)
-- [Jour 6 — Une histoire de poids](day-06/README.md)
-- [Jour 7 — L'imparfait du futur](day-07/README.md)
+| Jour | Proposition                                              |                    |
+|------|----------------------------------------------------------|--------------------|
+| 01   | [Un curieux message](day-01/README.md)                   | 🐨 `kotlin`        |
+| 02   | [Compter les Rennes](day-02/README.md)                   | 🅲️ `C`            | 
+| 03   | [Le script fantôme](day-03/README.md)                    | 🐚 `shell`         |
+| 04   | [Bataille de biscuits](day-04/README.md)                 | ☕️ `java`          |
+| 05   | [Le piège de la date infernale](day-05/README.md)        | 📊 `html, css, js` |
+| 06   | [Une histoire de poids](day-06/README.md)                | 🏷️ `typescript`   |
+| 07   | [L'imparfait du futur](day-07/README.md)                 | 🍁 `C#`            |
