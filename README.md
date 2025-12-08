@@ -9,3 +9,4 @@ Ce repository contient mes résolutions du [calendrier de l'Avent Coda](https://
 - [Jour 4 — Bataille de biscuits](day-04/README.md)
 - [Jour 5 – Le piège de la date infernale](day-05/README.md)
 - [Jour 6 — Une histoire de poids](day-06/README.md)
+- [Jour 7 — L'imparfait du futur](day-07/README.md)
