@@ -12,3 +12,4 @@ Ce repository contient mes résolutions du [calendrier de l'Avent Coda](https://
 | 05   | [Le piège de la date infernale](day-05/README.md)        | 📊 `html, css, js` |
 | 06   | [Une histoire de poids](day-06/README.md)                | 🏷️ `typescript`   |
 | 07   | [L'imparfait du futur](day-07/README.md)                 | 🍁 `C#`            |
+| 08   | [Les 3 enfants les plus sages](day-08/README.md)         | 🧭 `SQL`           |
