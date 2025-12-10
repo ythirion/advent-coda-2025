@@ -13,3 +13,4 @@ Ce repository contient mes résolutions du [calendrier de l'Avent Coda](https://
 | 06   | [Une histoire de poids](day-06/README.md)                | 🏷️ `typescript`   |
 | 07   | [L'imparfait du futur](day-07/README.md)                 | 🍁 `C#`            |
 | 08   | [Les 3 enfants les plus sages](day-08/README.md)         | 🧭 `SQL`           |
+| 09   | [Une distance en traîneau](day-09/README.md)             | 🐨 `kotlin`        |
