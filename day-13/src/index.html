@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <title>Marketplace des Elfes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Marketplace optimisée par les elfes.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-FAKE-999"></script>
+    <script async src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script defer src="script.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+<header class="masthead">
+    <h1>🎄 Marketplace des Elfes</h1>
+    <p>Bienvenue sur notre maketplace elfique.</p>
+    <video class="bg-video" autoplay muted loop playsinline>
+        <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+    </video>
+</header>
+
+<main class="container">
+    <section class="calendar-intro">
+        <h2>Calendrier de l'Avent — 24 Surprises</h2>
+        <p>Ouvre une case chaque jour...</p>
+        <div id="calendar" class="calendar-grid">
+        </div>
+    </section>
+
+    <section class="marketplace">
+        <h2>Market Elf — Offres massives</h2>
+        <p>Des milliers d'objets</p>
+        <div id="market" class="grid-heavy">
+        </div>
+    </section>
+
+    <section class="gallery">
+        <h2>Galerie d'images</h2>
+        <img src="https://images.unsplash.com/photo-1543353071-087092ec393a?q=100&w=6000&h=4000&fit=crop" alt="elf-1">
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=100&w=6000&h=4000&fit=crop" alt="elf-2">
+        <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?q=100&w=6000&h=4000&fit=crop" alt="elf-3">
+    </section>
+
+    <section class="charts">
+        <h2>Statistiques</h2>
+        <canvas id="heavyChart" width="3000" height="1000"></canvas>
+    </section>
+
+    <section class="threejs-3d">
+        <h2>Expérience 3D</h2>
+        <div id="three-root" style="width:100%; height:700px;"></div>
+    </section>
+
+    <section class="feeds">
+        <h2>Flux externes & polling</h2>
+        <div id="feed-tweets">Tweets</div>
+        <div id="feed-fb">Facebook</div>
+        <div id="remote-apis">APIs externes</div>
+    </section>
+
+    <section class="cta">
+        <button id="blastCpu" class="btn">Clique ici pour lancer une tempête CPU 🔥</button>
+        <button id="openAll" class="btn">Ouvrir les 24 cases (en mode brutal)</button>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <p>© Marketplace des Elfes</p>
+</footer>
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-FAKE-999');
+</script>
+</body>
+</html>

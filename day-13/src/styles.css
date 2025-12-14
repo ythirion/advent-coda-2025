@@ -1,0 +1,64 @@
+:root {
+    --bg:#0a0a0a;
+    --card:#101010;
+    --accent:#ff2a68;
+    --accent2:#2ad4ff;
+    --text:#f7f7f7;
+    --muted:#bdbdbd;
+}
+
+* { box-sizing: border-box; margin:0; padding:0; }
+html,body { height:100%; }
+body { background: linear-gradient(180deg, #040404 0%, #0a0a0a 100%); color: var(--text); font-family: 'Josefin Sans', sans-serif; line-height:1.4; }
+
+.masthead { position: relative; padding: 6rem 2rem 4rem; text-align:center; overflow:hidden; border-bottom: 6px solid rgba(255,255,255,0.03); }
+.masthead h1 { font-size: 3.6rem; margin-bottom:0.4rem; letter-spacing:0.04em; text-shadow: 0 10px 30px rgba(0,0,0,0.7); font-family:'Pacifico', cursive; }
+.masthead p { max-width:900px; margin: 0.4rem auto; color:var(--muted); }
+
+.bg-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.25; z-index:-1; transform: scale(1.1); }
+
+.container { padding: 3rem; max-width:1400px; margin:0 auto; }
+
+.calendar-grid { display:grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin: 1.5rem 0 3rem; }
+.calendar-day { background: linear-gradient(180deg,#151515,#0f0f0f); border-radius: 12px; padding: 1rem; min-height:120px; display:flex; flex-direction:column; justify-content:space-between; box-shadow: 0 20px 80px rgba(0,0,0,0.8); border: 3px solid rgba(255,255,255,0.02); transition: transform 400ms cubic-bezier(.2,.8,.2,1); }
+.calendar-day.available { border-color: rgba(42,212,255,0.6); transform: rotate(-0.5deg); }
+.calendar-day.locked { filter: grayscale(100%); opacity:0.6; transform: rotate(0.4deg) scale(0.98); }
+.day-number { font-size:2.4rem; font-weight:700; color:var(--accent); }
+.day-icon { font-size:1.2rem; color:var(--muted); }
+
+.grid-heavy { display:grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom:3rem; }
+.card-heavy { background: linear-gradient(180deg,#0f0f0f,#101010); padding: 18px; border-radius: 18px; height: 420px; overflow:hidden; position:relative; border: 4px solid rgba(255,42,104,0.06); }
+.card-heavy img { width:100%; height:220px; object-fit:cover; border-radius:12px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
+.card-heavy h3 { margin: 14px 0 8px; font-size:1.4rem; }
+.card-heavy p { color:var(--muted); font-size: .95rem; }
+
+.gallery { margin-bottom:3rem; display:grid; gap: 18px; grid-template-columns: repeat(3, 1fr); }
+.gallery img { width:100%; height:420px; object-fit:cover; border-radius: 14px; border: 6px solid rgba(255,255,255,0.02); }
+
+.charts { margin: 3rem 0; background: linear-gradient(180deg,#0a0a0a,#070707); padding:2rem; border-radius:12px; border: 1px solid rgba(255,255,255,0.03); }
+
+#three-root { border-radius: 12px; box-shadow: 0 40px 80px rgba(0,0,0,0.85); margin-bottom: 2rem; }
+
+.feeds { margin-top:2rem; display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.feeds div { padding: 1rem; background: linear-gradient(180deg,#111,#0c0c0c); border-radius:8px; min-height:120px; color:var(--muted); }
+
+.cta { text-align:center; margin:3rem 0; }
+.btn { display:inline-block; padding: 1rem 2rem; margin:0 0.5rem; border-radius: 999px; background: linear-gradient(90deg,var(--accent),var(--accent2)); color:#000; font-weight:700; border: none; cursor:pointer; box-shadow: 0 30px 60px rgba(0,0,0,0.6); transform: translateZ(0); }
+
+.site-footer { padding:2rem; text-align:center; color:var(--muted); border-top: 1px solid rgba(255,255,255,0.02); }
+
+.helper-grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:10px;}
+.util-hidden{ display:none !important; }
+.anim-slow{ animation: spin 30s linear infinite; }
+@keyframes spin{ from{ transform: rotate(0deg); } to{ transform: rotate(360deg); } }
+
+@media (max-width: 1024px) {
+    .grid-heavy { grid-template-columns: repeat(2,1fr); }
+    .gallery { grid-template-columns: repeat(2,1fr); }
+    .calendar-grid { grid-template-columns: repeat(4,1fr); }
+}
+@media (max-width: 600px) {
+    .grid-heavy { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: 1fr; }
+    .calendar-grid { grid-template-columns: repeat(3,1fr); }
+}
