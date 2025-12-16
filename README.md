@@ -19,3 +19,4 @@ Ce repository contient mes résolutions du [calendrier de l'Avent Coda](https://
 | 12   | [Elfe-ervescence](day-12/README.md)                      | ☕️ `java`          |
 | 13   | [La marketplace des Elfes](day-13/README.md)             | N/A                |
 | 14   | [Le chemin des cadeaux](day-14/README.md)                | 🦀 `rust`          |
+| 15   | [Le code parfait de Nori](day-15/README.md)              | 🏷️ `typescript`   |
