@@ -22,3 +22,4 @@ Ce repository contient mes résolutions du [calendrier de l'Avent Coda](https://
 | 15   | [Le code parfait de Nori](day-15/README.md)              | 🏷️ `typescript`   |
 | 16   | [Un message secret](day-16/README.md)                    | 💠 `F#`            |
 | 17   | [if... elfe... refactor](day-17/README.md)               | ☕️ `java`          |
+| 18   | [Le mystère du GQS](day-18/README.md)                    | 🗼 `scala`         |
