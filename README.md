@@ -27,3 +27,5 @@ Ce repository contient mes résolutions du [calendrier de l'Avent Coda](https://
 | 20   | [Logistique Elfique](day-20/README.md)                   | 🍁 `C#`            |
 | 21   | [Démasquer l’elfe malveillant](day-21/README.md)         | 🧭 `SQL` |
 | 22   | [ASCII paraît, on installe le sapin ?](day-22/README.md) | 🏷️ `typescript`   |
+| 23   | [Se rendre indispensable !!!](day-23/README.md)          | 🍁 `C#`            |
+| 24   | [Un Message du Père Noël](day-24/README.md)              | N/A                |
