@@ -25,7 +25,8 @@ Ce repository contient mes résolutions du [calendrier de l'Avent Coda](https://
 | 18   | [Le mystère du GQS](day-18/README.md)                    | 🗼 `scala`         |
 | 19   | [Le vrai visage du Père Noël](day-19/README.md)          | 📊 `html, css, js` |
 | 20   | [Logistique Elfique](day-20/README.md)                   | 🍁 `C#`            |
-| 21   | [Démasquer l’elfe malveillant](day-21/README.md)         | 🧭 `SQL` |
+| 21   | [Démasquer l’elfe malveillant](day-21/README.md)         | 🧭 `SQL`           |
 | 22   | [ASCII paraît, on installe le sapin ?](day-22/README.md) | 🏷️ `typescript`   |
 | 23   | [Se rendre indispensable !!!](day-23/README.md)          | 🍁 `C#`            |
 | 24   | [Un Message du Père Noël](day-24/README.md)              | N/A                |
+| 25   | [L’Audit des cadeaux mécontents](day-25/README.md)       | 🥤 `go`            |
